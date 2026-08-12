@@ -131,6 +131,7 @@ article {
     transition: all 0.2s ease-out;
     width: calc(33.333% - 14px);
     height: 220px;
+    text-align: center;
 }
 
 .content-cards:hover {
@@ -142,7 +143,6 @@ article {
 
 .content-cards h3 {
     padding-bottom: 1%;
-    text-align: center;
 }
 
 .content-cards p {
@@ -153,7 +153,6 @@ article {
 .content-cards span {
     margin-top: auto;
     font-size: 0.9rem;
-    text-align: center;
 }
 
 .link {
