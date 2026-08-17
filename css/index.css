@@ -12,6 +12,7 @@
 @font-face {
     font-family: "GregorianFLF";
     src: url('../font/GregorianFLF.ttf');
+    font-display: swap;
 }
 
 ::selection {
