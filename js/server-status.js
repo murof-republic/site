@@ -7,14 +7,14 @@ async function status() {
 
 		document.getElementById('server-address').innerText = data.host;
 		
-		if(data.online === false || data.software === null) {
-			document.getElementById('server-dot').classList.add('offline');
-		} else {
+		if(data.online === true) {
 			document.getElementById('server-dot').classList.add('online');
+		} else {
+			document.getElementById('server-dot').classList.add('offline');
 		}
 
 	} catch(erro) {
-		console.log('Erro ao buscar dados!:', erro);
+		console.log('Erro ao buscar dados:', erro);
 	}
 };
 
