@@ -139,6 +139,7 @@ article {
     transform: scale(1.05);
     transition: all 0.2s ease-out;
     border: 1px solid var(--principal);
+    color: var(--principal);
     cursor: pointer;
 }
 
@@ -148,12 +149,11 @@ article {
 
 .content-cards p {
     padding-inline: 1%;
-    padding-bottom: 5px;
 }
 
 .content-cards span {
-    margin-top: auto;
     font-size: 0.9rem;
+    margin-top: auto;
 }
 
 .link {
