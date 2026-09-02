@@ -101,7 +101,8 @@ nav ul li:hover {
 }
 
 article {
-    margin-inline: 5%;
+    width: min(90%, 1800px);
+    margin-inline: auto;
     margin-top: 8%;
     margin-bottom: 5%;
 }
