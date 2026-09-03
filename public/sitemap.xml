@@ -26,4 +26,28 @@
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
+  <url>
+       <loc>https://murof.me/en/</loc>
+       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>1.0000</priority>
+  </url>
+  <url>
+       <loc>https://murof.me/en/pages/artes.html</loc>
+       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://murof.me/en/pages/projetos.html</loc>
+       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://murof.me/en/pages/apoiadores.html</loc>
+       <lastmod>2026-09-02T00:00:00+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
 </urlset>
