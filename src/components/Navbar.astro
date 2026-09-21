@@ -5,13 +5,6 @@ import discord from "../assets/images/discord.png"
 import github from "../assets/images/github.png"
 
 const page = Astro.url.pathname;
-
-const pageName =
-    page === "/" ? "Home" :
-    page === "/loja" ? "Loja" :
-    page === "/galeria" ? "Galeria" :
-    page === "/projetos" ? "Projetos" :
-    "Murof";
 ---
 
 <nav>
@@ -44,7 +37,6 @@ const pageName =
 
     <details class="mobile-menu">
         <summary>
-            <span>{pageName}</span>
             <span class="menu-icon">☰</span>
         </summary>
 
