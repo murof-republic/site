@@ -1,0 +1,162 @@
+---
+import "../styles/global.css"
+import discord from "../assets/images/discord.png"
+import github from "../assets/images/github.png"
+
+const page = Astro.url.pathname;
+---
+
+<nav>
+    <div class="left">
+        <a href="/" class="logo">Murof</a>
+    </div>
+
+    <div class="center">
+        <a href="/" class={page === "/" ? "active" : ""}>Home</a>
+        <a href="/loja" class={page === "/loja" ? "active" : ""}>Loja</a>
+        <a href="/galeria" class={page === "/galeria" ? "active" : ""}>Galeria</a>
+        <a href="/projetos" class={page === "/projetos" ? "active" : ""}>Projetos</a>
+    </div>
+
+    <div class="right">
+        <div class="btn">
+            <a href="https://discord.gg/MWrYrytMCg" target="_blank">
+                <img src={discord.src} alt="Discord" class="btn-social">
+            </a>
+
+            <a href="https://github.com/murof-republic" target="_blank">
+                <img src={github.src} alt="Github" class="btn-social">
+            </a>
+        </div>
+
+        <div class="widget-mine">
+            <span id="dot" class="offline"></span>
+            <span id="adress">mc.murof.me</span>
+        </div>
+    </div>
+</nav>
+
+<style>
+    @import url("../assets/fonts/gregorianflf/gregorianflf.css");
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 64px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        z-index: 1000;
+        padding-inline: 2%;
+        border: 1px solid var(--border);
+        box-sizing: border-box;
+    }
+
+    .left,
+    .center,
+    .right {
+        display: flex;
+        align-items: center;
+    }
+
+    .left {
+        justify-self: start;
+    }
+
+    .center {
+        gap: 0;
+    }
+
+    .right {
+        justify-self: end;
+    }
+
+    .center a {
+        padding: 20px;
+        border-bottom: 2px solid #ffffff00;
+        transition: all 0.1s ease-out;
+    }
+
+    .center a:hover {
+        color: var(--principal);
+        border-bottom: 2px solid var(--principal);
+        transition: all 0.1s ease-out;
+    }
+
+    .center a.active {
+        color: var(--principal);
+        border-bottom: 2px solid var(--principal);
+    }
+
+    .logo {
+        font-family: "GregorianFLF", sans-serif;
+        font-weight: normal;
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        line-height: 1;
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        border-right: 1px solid var(--border);
+        padding-right: 15px;
+    }
+
+    .btn-social {
+        display: block;
+        margin-left: 10px;
+        width: 25px;
+        height: 25px;
+        filter: invert(50%);
+    }
+
+    .btn-social:hover {
+        filter: none;
+    }
+
+    .widget-mine {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-left: 15px;
+        line-height: 1;
+    }
+
+    #dot {
+        width: 8px;
+        height: 8px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        position: relative;
+        top: 1px;
+    }
+
+    #dot.online {
+        background: #2ecc71;
+        box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.15);
+    }
+
+    #dot.offline {
+        background: #ff3b30;
+        box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.15);
+    }
+</style>
+
+<script>
+    fetch("https://api.mcstatus.io/v2/status/java/mc.murof.me")
+        .then(response => response.json())
+        .then(data => {
+            if (data.online) {
+                const dot = document.getElementById("dot") as HTMLElement;
+                const adress = document.getElementById("adress") as HTMLElement;
+
+                dot.classList.remove("offline");
+                dot.classList.add("online");
+                adress.innerText = data.host;
+            }
+        });
+</script>
