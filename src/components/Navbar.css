@@ -204,7 +204,7 @@ nav {
 
     .dropdown a.active {
         color: var(--principal);
-        border-right-color: var(--principal);
+        border-right: 2px solid var(--principal);
     }
 
     .mobile-social {
