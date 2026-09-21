@@ -3,6 +3,8 @@ import "../styles/global.css"
 import "./Navbar.css"
 import discord from "../assets/images/discord.png"
 import github from "../assets/images/github.png"
+
+const page = Astro.url.pathname;
 ---
 
 <nav>
@@ -11,10 +13,10 @@ import github from "../assets/images/github.png"
     </div>
 
     <div class="center">
-        <a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a>
-        <a href="/loja" class={Astro.url.pathname === "/loja" ? "active" : ""}>Loja</a>
-        <a href="/galeria" class={Astro.url.pathname === "/galeria" ? "active" : ""}>Galeria</a>
-        <a href="/projetos" class={Astro.url.pathname === "/projetos" ? "active" : ""}>Projetos</a>
+        <a href="/" class={page === "/" ? "active" : ""}>Home</a>
+        <a href="/loja" class={page === "/loja" ? "active" : ""}>Loja</a>
+        <a href="/galeria" class={page === "/galeria" ? "active" : ""}>Galeria</a>
+        <a href="/projetos" class={page === "/projetos" ? "active" : ""}>Projetos</a>
     </div>
 
     <div class="right">
@@ -40,10 +42,10 @@ import github from "../assets/images/github.png"
         </summary>
 
         <div class="dropdown">
-            <a href="/">Home</a>
-            <a href="/loja">Loja</a>
-            <a href="/galeria">Galeria</a>
-            <a href="/projetos">Projetos</a>
+            <a href="/" class={page === "/" ? "active" : ""}>Home</a>
+            <a href="/loja" class={page === "/loja" ? "active" : ""}>Loja</a>
+            <a href="/galeria" class={page === "/galeria" ? "active" : ""}>Galeria</a>
+            <a href="/projetos" class={page === "/projetos" ? "active" : ""}>Projetos</a>
 
             <div class="mobile-social">
                 <a href="https://discord.gg/MWrYrytMCg" target="_blank">
@@ -59,7 +61,19 @@ import github from "../assets/images/github.png"
 </nav>
 
 <script>
-    // Status do Minecraft
+    function updateActive(): void {
+        const path: string = window.location.pathname.replace(/\/$/, "") || "/";
+
+        document.querySelectorAll<HTMLAnchorElement>(".dropdown > a").forEach((link) => {
+            link.classList.toggle("active", link.getAttribute("href") === path);
+        });
+    }
+
+    updateActive();
+
+    document.addEventListener("astro:page-load", updateActive);
+
+
     fetch("https://api.mcstatus.io/v2/status/java/mc.murof.me")
         .then(response => response.json())
         .then(data => {
@@ -73,21 +87,11 @@ import github from "../assets/images/github.png"
             }
         });
 
-    // Página ativa no menu mobile
-    const path = window.location.pathname.replace(/\/$/, "") || "/";
-
-    document.querySelectorAll(".dropdown > a").forEach((link) => {
-        const href = link.getAttribute("href");
-
-        if (href === path) {
-            link.classList.add("active");
-        }
-    });
 
     // Menu Dropdown; Animação.
     const mobileMenu = document.querySelector(".mobile-menu") as HTMLDetailsElement;
 
-    mobileMenu?.addEventListener("click", (event) => {
+    mobileMenu?.addEventListener("click", (event: MouseEvent) => {
         const target = event.target as HTMLElement;
 
         if (target.closest("summary") && mobileMenu.open) {
