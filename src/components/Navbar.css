@@ -60,6 +60,9 @@ nav {
     text-transform: uppercase;
     text-decoration: none;
     line-height: 1;
+}
+
+.logo:hover {
     color: inherit;
 }
 
@@ -125,7 +128,8 @@ nav {
         transform:translateX(-50%);
     }
 
-    .center,.right {
+    .center,
+    .right {
         display:none;
     }
 
@@ -165,7 +169,22 @@ nav {
         background:var(--background);
         border:1px solid var(--border);
         box-sizing:border-box;
-        margin-right: 2px;
+        margin-right:2px;
+        opacity:0;
+        transform:translateY(-8px);
+        transition:opacity .15s ease, transform .15s ease;
+        pointer-events:none;
+    }
+
+    .mobile-menu[open] .dropdown {
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+    }
+
+    .mobile-menu.closing .dropdown {
+        opacity:0;
+        transform:translateY(-8px);
     }
 
     .dropdown a {
@@ -179,7 +198,8 @@ nav {
         box-sizing:border-box;
     }
 
-    .dropdown a:hover,.dropdown a.active {
+    .dropdown a:hover,
+    .dropdown a.active {
         color:var(--principal);
         border-right-color:var(--principal);
     }

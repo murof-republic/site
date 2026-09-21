@@ -78,4 +78,22 @@ const pageName =
                 adress.innerText = data.host;
             }
         });
+
+        // Menu Dropdown; Animação.
+        const mobileMenu = document.querySelector(".mobile-menu") as HTMLDetailsElement;
+
+        mobileMenu?.addEventListener("click", (event) => {
+            const target = event.target as HTMLElement;
+
+            if (target.closest("summary") && mobileMenu.open) {
+                event.preventDefault();
+
+                mobileMenu.classList.add("closing");
+
+                setTimeout(() => {
+                    mobileMenu.open = false;
+                    mobileMenu.classList.remove("closing");
+                }, 200);
+            }
+        });
 </script>
