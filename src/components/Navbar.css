@@ -116,7 +116,7 @@ nav {
     display: none;
 }
 
-@media (max-width:767px) {
+@media (max-width: 767px) {
     nav {
         grid-template-columns: 1fr auto;
         padding-inline: 5%;
@@ -141,11 +141,9 @@ nav {
 
     .mobile-menu summary {
         display: flex;
-        align-items: last baseline;
-        gap: 12px;
+        align-items: center;
         cursor: pointer;
         list-style: none;
-        font-size: 1rem;
         user-select: none;
     }
 
@@ -198,13 +196,10 @@ nav {
         box-sizing: border-box;
     }
 
-    .dropdown a:hover {
-        color: var(--principal);
-    }
-
+    .dropdown a:hover,
     .dropdown a.active {
         color: var(--principal);
-        border-right: 2px solid var(--principal);
+        border-right-color: var(--principal);
     }
 
     .mobile-social {
