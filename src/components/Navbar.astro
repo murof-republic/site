@@ -65,14 +65,16 @@ const page = Astro.url.pathname;
         const path: string = window.location.pathname.replace(/\/$/, "") || "/";
 
         document.querySelectorAll<HTMLAnchorElement>(".dropdown > a").forEach((link) => {
-            link.classList.toggle("active", link.getAttribute("href") === path);
+            link.classList.toggle(
+                "active",
+                link.getAttribute("href") === path
+            );
         });
     }
 
     updateActive();
 
     document.addEventListener("astro:page-load", updateActive);
-
 
     fetch("https://api.mcstatus.io/v2/status/java/mc.murof.me")
         .then(response => response.json())
@@ -86,7 +88,6 @@ const page = Astro.url.pathname;
                 adress.innerText = data.host;
             }
         });
-
 
     // Menu Dropdown; Animação.
     const mobileMenu = document.querySelector(".mobile-menu") as HTMLDetailsElement;

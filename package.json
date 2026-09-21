@@ -12,9 +12,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.3"
+    "astro": "^7.3.3",
+    "firebase": "^12.19.0"
   },
   "allowScripts": {
-    "esbuild": true
+    "esbuild": true,
+    "@firebase/util@1.15.3": true,
+    "protobufjs@7.6.6": true
   }
 }
