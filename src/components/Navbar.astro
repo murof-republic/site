@@ -3,8 +3,6 @@ import "../styles/global.css"
 import "./Navbar.css"
 import discord from "../assets/images/discord.png"
 import github from "../assets/images/github.png"
-
-const page = Astro.url.pathname;
 ---
 
 <nav>
@@ -13,10 +11,10 @@ const page = Astro.url.pathname;
     </div>
 
     <div class="center">
-        <a href="/" class={page === "/" ? "active" : ""}>Home</a>
-        <a href="/loja" class={page === "/loja" ? "active" : ""}>Loja</a>
-        <a href="/galeria" class={page === "/galeria" ? "active" : ""}>Galeria</a>
-        <a href="/projetos" class={page === "/projetos" ? "active" : ""}>Projetos</a>
+        <a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a>
+        <a href="/loja" class={Astro.url.pathname === "/loja" ? "active" : ""}>Loja</a>
+        <a href="/galeria" class={Astro.url.pathname === "/galeria" ? "active" : ""}>Galeria</a>
+        <a href="/projetos" class={Astro.url.pathname === "/projetos" ? "active" : ""}>Projetos</a>
     </div>
 
     <div class="right">
@@ -24,6 +22,7 @@ const page = Astro.url.pathname;
             <a href="https://discord.gg/MWrYrytMCg" target="_blank">
                 <img src={discord.src} alt="Discord" class="btn-social">
             </a>
+
             <a href="https://github.com/murof-republic" target="_blank">
                 <img src={github.src} alt="Github" class="btn-social">
             </a>
@@ -41,10 +40,11 @@ const page = Astro.url.pathname;
         </summary>
 
         <div class="dropdown">
-            <a href="/" class={page === "/" ? "active" : ""}>Home</a>
-            <a href="/loja" class={page === "/loja" ? "active" : ""}>Loja</a>
-            <a href="/galeria" class={page === "/galeria" ? "active" : ""}>Galeria</a>
-            <a href="/projetos" class={page === "/projetos" ? "active" : ""}>Projetos</a>
+            <a href="/">Home</a>
+            <a href="/loja">Loja</a>
+            <a href="/galeria">Galeria</a>
+            <a href="/projetos">Projetos</a>
+
             <div class="mobile-social">
                 <a href="https://discord.gg/MWrYrytMCg" target="_blank">
                     Discord
@@ -59,33 +59,46 @@ const page = Astro.url.pathname;
 </nav>
 
 <script>
+    // Status do Minecraft
     fetch("https://api.mcstatus.io/v2/status/java/mc.murof.me")
         .then(response => response.json())
         .then(data => {
             if (data.online) {
                 const dot = document.getElementById("dot") as HTMLElement;
                 const adress = document.getElementById("adress") as HTMLElement;
+
                 dot.classList.remove("offline");
                 dot.classList.add("online");
                 adress.innerText = data.host;
             }
         });
 
-        // Menu Dropdown; Animação.
-        const mobileMenu = document.querySelector(".mobile-menu") as HTMLDetailsElement;
+    // Página ativa no menu mobile
+    const path = window.location.pathname.replace(/\/$/, "") || "/";
 
-        mobileMenu?.addEventListener("click", (event) => {
-            const target = event.target as HTMLElement;
+    document.querySelectorAll(".dropdown > a").forEach((link) => {
+        const href = link.getAttribute("href");
 
-            if (target.closest("summary") && mobileMenu.open) {
-                event.preventDefault();
+        if (href === path) {
+            link.classList.add("active");
+        }
+    });
 
-                mobileMenu.classList.add("closing");
+    // Menu Dropdown; Animação.
+    const mobileMenu = document.querySelector(".mobile-menu") as HTMLDetailsElement;
 
-                setTimeout(() => {
-                    mobileMenu.open = false;
-                    mobileMenu.classList.remove("closing");
-                }, 200);
-            }
-        });
+    mobileMenu?.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
+
+        if (target.closest("summary") && mobileMenu.open) {
+            event.preventDefault();
+
+            mobileMenu.classList.add("closing");
+
+            setTimeout(() => {
+                mobileMenu.open = false;
+                mobileMenu.classList.remove("closing");
+            }, 200);
+        }
+    });
 </script>
