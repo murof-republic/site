@@ -119,13 +119,7 @@ nav {
 @media (max-width:767px) {
     nav {
         grid-template-columns: 1fr auto;
-        padding-inline: 5%;
-    }
-
-    .left {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        padding-inline: 10%;
     }
 
     .center,
