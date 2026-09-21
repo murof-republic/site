@@ -198,7 +198,10 @@ nav {
         box-sizing: border-box;
     }
 
-    .dropdown a:hover,
+    .dropdown a:hover {
+        color: var(--principal);
+    }
+
     .dropdown a.active {
         color: var(--principal);
         border-right-color: var(--principal);
