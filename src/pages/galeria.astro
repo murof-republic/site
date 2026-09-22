@@ -1,6 +1,50 @@
 ---
+import "../styles/global.css"
 import Layout from "../layouts/Layout.astro"
+import Tittle from "../components/Tittle.astro"
+import Arte from "../components/Arte.astro"
+
+import { buscarArtes } from "../firebase/artes"
+
+const artes = await buscarArtes()
+
 ---
 
 <Layout title="Galeria">
+    <main>
+        <article>
+            <Tittle
+                titulo="Galeria de Artes"
+                subtitulo="Todos as artes aqui foram feitas pela galera do servidor!"
+            />
+
+            <section class="galeria">
+                {artes.map(arte => (
+                    <Arte
+                        arte={arte.url}
+                        nome={arte.nome}
+                        autor={arte.autor}
+                    />
+                ))}
+            </section>
+
+            <Tittle
+                titulo="Artistas"
+                subtitulo="Espaço dedicado aos créditos de todos os artistas. Muito obrigado por contribuírem e fazerem parte deste mural!"
+            />
+
+        </article>
+    </main>
+
+    <style>
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+            width: 100%;
+            font-size: 1rem;
+            padding-bottom: 5%;
+            border-bottom: 1px solid var(--border);
+        }
+    </style>
 </Layout>

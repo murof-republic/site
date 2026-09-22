@@ -7,7 +7,7 @@ import Card from "../components/Card.astro";
 
 import { buscarApoiadores } from "../firebase/apoiadores"
 
-const apoiadores = await buscarApoiadores();
+const apoiadores = await buscarApoiadores()
 ---
 
 <Layout title="Apoiadores">
@@ -17,6 +17,7 @@ const apoiadores = await buscarApoiadores();
                 titulo="Apoiadores"
                 subtitulo="Pessoal que apoia o servidor, moderadores, Server Boosters e outras pessoas que contribuem para a comunidade de alguma forma."
             />
+
             <section class="apoiadores">
                 {apoiadores.map(apoiador => (
                     <Card 
@@ -45,7 +46,7 @@ const apoiadores = await buscarApoiadores();
             .apoiadores {
                 flex-direction: column;
                 margin: 0;
-                margin-bottom: 20%;
+                margin-bottom: 15%;
             }
         }
     </style>

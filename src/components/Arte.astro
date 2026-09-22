@@ -1,0 +1,57 @@
+---
+interface Props {
+    arte: string
+    nome: string
+    autor: string
+}
+
+const { arte, nome, autor } = Astro.props
+---
+
+<div class="card">
+    <img src={arte} alt={nome}>
+
+    <div class="overlay">
+        <h4>{nome}</h4>
+        <p>{autor}</p>
+    </div>
+</div>
+
+<style>
+    .card {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        background-color: var(--background);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        transition: all 0.2s ease-out;
+    }
+
+    .card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    .overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 16px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+        width: 100%;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+        z-index: 997;
+    }
+</style>
