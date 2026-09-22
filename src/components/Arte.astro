@@ -9,7 +9,7 @@ const { arte, nome, autor } = Astro.props
 ---
 
 <div class="card">
-    <img src={arte} alt={nome}>
+    <img src={arte} alt={nome} data-modal-image>
 
     <div class="overlay">
         <h4>{nome}</h4>
@@ -57,7 +57,11 @@ const { arte, nome, autor } = Astro.props
 
     @media (max-width: 767px) {
         .card {
-            height: 200px;
+            height: 300px;
+        }
+
+        .card:hover img {
+            transform: none;
         }
     }
 </style>
