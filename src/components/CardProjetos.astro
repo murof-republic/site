@@ -1,30 +1,24 @@
 ---
 interface Props {
-    avatar: string
     nome: string
     descricao: string
+    mantedor: string
     class?: string;
     link?: string;
 }
 
-const { avatar, nome, descricao, class: className, link } = Astro.props
+const { nome, descricao, mantedor, link, class: className } = Astro.props
 ---
 
-<div class={`card ${className ?? ""}`} onclick={link ? `window.open('${link}', '_blank')` : undefined}>
-    <img src={avatar}>
-
+<div class={`card ${className ?? ""}`} onclick={link ? `window.open('${link}', '_blank')` : undefined} >
     <div class="card-content">
         <h2>{nome}</h2>
-        <p>{descricao}</p>
+        <p>{descricao}</p><br>
+        <p>Mantido por {mantedor}</p>
     </div>
 </div>
 
 <style>
-    .card:global(.fixed) {
-        width: 100%;
-        margin-block: 5%;
-    }
-
     .card {
         background-color: var(--background);
         border: 1px solid var(--border);
@@ -41,13 +35,14 @@ const { avatar, nome, descricao, class: className, link } = Astro.props
         cursor: pointer;
     }
 
-    .card img {
-        width: 60px;
-        padding-bottom: 5px;
+    .card-content {
+        width: 100%;
+        text-align: center;
     }
 
     .card-content h2 {
         font-size: 1.2rem;
+        padding: 5px;
     }
 
     .card-content p {
@@ -74,11 +69,6 @@ const { avatar, nome, descricao, class: className, link } = Astro.props
             transform: none;
             transition: none;
             border: 1px solid var(--border);
-        }
-
-        .card:global(.fixed) {
-            margin: 0;
-            margin-top: 5%;
         }
     }
 </style>

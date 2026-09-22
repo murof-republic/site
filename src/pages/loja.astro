@@ -1,9 +1,49 @@
 ---
+import "../styles/global.css"
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Tittle from "../components/Tittle.astro";
 ---
 
 <Layout title="Loja">
     <main>
-        
+        <article>
+            <Tittle
+                titulo="Loja"
+                subtitulo="Em breve, novidades do servidor."
+            />
+
+            <section class="loja">
+                {Array.from({ length: 2 }).map(() => (
+                        <Card
+                            avatar=""
+                            nome=""
+                            descricao=""
+                        />
+                    ))
+                }
+            </section>
+        </article>
     </main>
+
+    <style>
+        .loja {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            font-size: 1rem;
+            gap: 20px;
+            margin-bottom: 5%;
+        }
+
+        @media (max-width: 767px) {
+            .loja {
+                flex-direction: column;
+                margin: 0;
+                margin-bottom: 15%;
+            }
+        }
+    </style>
 </Layout>

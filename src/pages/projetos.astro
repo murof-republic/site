@@ -1,9 +1,47 @@
 ---
+import "../styles/global.css"
 import Layout from "../layouts/Layout.astro";
+import CardProjetos from "../components/CardProjetos.astro";
+import Tittle from "../components/Tittle.astro";
 ---
 
 <Layout title="Projetos">
     <main>
-        
+        <article>
+            <Tittle
+                titulo="Projetos"
+                subtitulo="Projetos e outros conteúdos feitos pelo servidor."
+            />
+
+            <section class="projetos">
+                <CardProjetos 
+                    nome="Snuf"
+                    descricao="Bot do servidor, com comandos de entretenimento e inteligência artificial integrada, feito com Javascript."
+                    mantedor="triggerww"
+                    link="https://github.com/murof-republic/snuf"
+                />
+            </section>
+        </article>
     </main>
+
+    <style>
+        .projetos {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            font-size: 1rem;
+            gap: 20px;
+            margin-bottom: 5%;
+        }
+
+        @media (max-width: 767px) {
+            .projetos {
+                flex-direction: column;
+                margin: 0;
+                margin-bottom: 15%;
+            }
+        }
+    </style>
 </Layout>
