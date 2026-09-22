@@ -3,12 +3,13 @@ interface Props {
     avatar: string
     nome: string
     descricao: string
+    class?: string;
 }
 
-const { avatar, nome, descricao } = Astro.props
+const { avatar, nome, descricao, class: className } = Astro.props
 ---
 
-<div class="card">
+<div class={`card ${className ?? ""}`}>
     <img src={avatar} alt={nome}>
 
     <div class="card-content">
@@ -18,13 +19,18 @@ const { avatar, nome, descricao } = Astro.props
 </div>
 
 <style>
+    .card:global(.fixed) {
+        width: 100%;
+        margin-block: 5%;
+    }
+
     .card {
         background-color: var(--background);
         border: 1px solid var(--border);
         padding: 20px;
         transition: all 0.2s ease-out;
+        width: calc(33.333% - 14px);
         height: 200px;
-        margin: 15px;
     }
 
     .card:hover {
@@ -36,17 +42,22 @@ const { avatar, nome, descricao } = Astro.props
 
     .card img {
         width: 60px;
+        padding-bottom: 5px;
     }
 
     .card-content {
         font-size: 1rem;
     }
 
+    .card-content p {
+        padding-top: 2px;
+    }
+
     @media (max-width: 767px) {
         .card {
             margin: 0;
-            margin-top: 5%;
             font-size: 0.9rem;
+            width: 100%;
         }
 
         .card img {
@@ -63,6 +74,11 @@ const { avatar, nome, descricao } = Astro.props
             transform: none;
             transition: none;
             border: 1px solid var(--border);
+        }
+
+        .card:global(.fixed) {
+            margin: 0;
+            margin-top: 5%;
         }
     }
 </style>

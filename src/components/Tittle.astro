@@ -1,0 +1,45 @@
+---
+interface Props {
+    titulo: string
+    subtitulo: string
+}
+
+const { titulo, subtitulo } = Astro.props
+
+---
+
+<header class="tittle">
+    <h2>{titulo}</h2>
+    <p>{subtitulo}</p>
+</header>
+
+<style>
+    .tittle {
+        width: 60%;
+        margin-top: 5%;
+    }
+
+    .tittle h2 {
+        font-size: 1.5rem;
+    }
+
+    .tittle p {
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 767px) {
+        .tittle {
+            width: 100%;
+            padding-block: 5%;
+        }
+
+        .tittle h1 {
+            font-size: 1.4rem;
+        }
+
+        .tittle p {
+            padding-bottom: 2%;
+            font-size: 1rem;
+        }
+    }
+</style>

@@ -1,0 +1,53 @@
+---
+import "../styles/global.css"
+
+import Tittle from "../components/Tittle.astro";
+import Layout from "../layouts/Layout.astro"
+import Card from "../components/Card.astro";
+
+import { buscarApoiadores } from "../firebase/apoiadores"
+
+const apoiadores = await buscarApoiadores();
+---
+
+<Layout title="Apoiadores">
+    <main>
+        <article>
+            <Tittle
+                titulo="Apoiadores"
+                subtitulo="Pessoal que apoia o servidor, moderadores, Server Boosters e outras pessoas que contribuem para a comunidade de alguma forma."
+            />
+            <section class="apoiadores">
+                {apoiadores.map(apoiador => (
+                    <Card 
+                        avatar={apoiador.avatar}
+                        nome={apoiador.nome}
+                        descricao={apoiador.descrição}
+                    />
+                ))}
+            </section>
+        </article>
+    </main>
+
+    <style>
+        .apoiadores {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            font-size: 1rem;
+            gap: 20px;
+            margin-block: 2%;
+        }
+
+        @media (max-width: 767px) {
+            .apoiadores {
+                flex-direction: column;
+                margin: 0;
+                margin-bottom: 20%;
+            }
+        }
+    </style>
+</Layout>

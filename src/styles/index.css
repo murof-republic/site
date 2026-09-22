@@ -1,0 +1,68 @@
+.background-mobile {
+    display: none;
+}
+
+.introduction {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 50px);
+}
+
+.introduction-text {
+    width: 36%;
+}
+
+.introduction-text h1 {
+    font-size: 1.5rem;
+    padding-bottom: 2%;
+}
+
+.introduction-text p {
+    font-size: 1.2rem;
+    padding-bottom: 2%;
+}
+
+.introduction-cards {
+    width: 35%;
+}
+
+@media (max-width: 767px) {
+    .background-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding-top: 50px;
+        padding-bottom: 20px; 
+        max-width: 100%;
+    }
+
+    .introduction {
+        flex-direction: column;
+        background-image: none !important;
+        margin-bottom: 15%;
+    }
+
+    .introduction-text {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .introduction-text h1 {
+        font-size: 1.4rem;
+    }
+
+    .introduction-text p {
+        padding-bottom: 2%;
+        font-size: 1rem;
+    }
+
+    .introduction-cards {
+        width: 100%;
+    }
+}
