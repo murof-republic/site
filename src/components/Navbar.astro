@@ -13,11 +13,11 @@ const page = Astro.url.pathname;
     </div>
 
     <div class="center">
-        <a href="/" class={page === "/" ? "active" : ""}>Home</a>
-        <a href="/loja" class={page === "/loja" ? "active" : ""}>Loja</a>
-        <a href="/galeria" class={page === "/galeria" ? "active" : ""}>Galeria</a>
-        <a href="/projetos" class={page === "/projetos" ? "active" : ""}>Projetos</a>
-        <a href="/apoiadores" class={page === "/apoiadores" ? "active" : ""}>Apoiadores</a>
+        <a href="/" data-astro-prefetch class={page === "/" ? "active" : ""}>Home</a>
+        <a href="/loja" data-astro-prefetch class={page === "/loja" ? "active" : ""}>Loja</a>
+        <a href="/galeria" data-astro-prefetch class={page === "/galeria" ? "active" : ""}>Galeria</a>
+        <a href="/projetos" data-astro-prefetch class={page === "/projetos" ? "active" : ""}>Projetos</a>
+        <a href="/apoiadores" data-astro-prefetch class={page === "/apoiadores" ? "active" : ""}>Apoiadores</a>
     </div>
 
     <div class="right">
@@ -43,11 +43,11 @@ const page = Astro.url.pathname;
         </summary>
 
         <div class="dropdown">
-            <a href="/" class={page === "/" ? "active" : ""}>Home</a>
-            <a href="/loja" class={page === "/loja" ? "active" : ""}>Loja</a>
-            <a href="/galeria" class={page === "/galeria" ? "active" : ""}>Galeria</a>
-            <a href="/projetos" class={page === "/projetos" ? "active" : ""}>Projetos</a>
-            <a href="/apoiadores" class={page === "/apoiadores" ? "active" : ""}>Apoiadores</a>
+            <a href="/" data-astro-prefetch class={page === "/" ? "active" : ""}>Home</a>
+            <a href="/loja" data-astro-prefetch class={page === "/loja" ? "active" : ""}>Loja</a>
+            <a href="/galeria" data-astro-prefetch class={page === "/galeria" ? "active" : ""}>Galeria</a>
+            <a href="/projetos" data-astro-prefetch class={page === "/projetos" ? "active" : ""}>Projetos</a>
+            <a href="/apoiadores" data-astro-prefetch class={page === "/apoiadores" ? "active" : ""}>Apoiadores</a>
 
             <div class="mobile-social">
                 <a href="https://discord.gg/MWrYrytMCg" target="_blank">
