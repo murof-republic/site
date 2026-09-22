@@ -3,10 +3,14 @@ import "../styles/global.css"
 import Layout from "../layouts/Layout.astro"
 import Tittle from "../components/Tittle.astro"
 import Arte from "../components/Arte.astro"
+import Card from "../components/Card.astro"
 
 import { buscarArtes } from "../firebase/artes"
+import { buscarArtistas } from "../firebase/apoiadores.ts"
+
 
 const artes = await buscarArtes()
+const artistas = await buscarArtistas()
 
 ---
 
@@ -33,6 +37,16 @@ const artes = await buscarArtes()
                 subtitulo="Espaço dedicado aos créditos de todos os artistas. Muito obrigado por contribuírem e fazerem parte deste mural!"
             />
 
+            <section class="artistas">
+                {artistas.map(artista => (
+                    <Card 
+                        avatar={artista.avatar}
+                        nome={artista.nome}
+                        descricao={artista.descrição}
+                    />
+                ))}
+            </section>
+
         </article>
     </main>
 
@@ -43,8 +57,27 @@ const artes = await buscarArtes()
             gap: 20px;
             width: 100%;
             font-size: 1rem;
-            padding-bottom: 5%;
+            padding-bottom: 4%;
             border-bottom: 1px solid var(--border);
+        }
+
+        .artistas {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            font-size: 1rem;
+            gap: 20px;
+            margin-bottom: 5%;
+        }
+
+        @media (max-width: 767px) {
+            .artistas {
+                flex-direction: column;
+                margin: 0;
+                margin-bottom: 15%;
+            }
         }
     </style>
 </Layout>
