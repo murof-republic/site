@@ -10,11 +10,6 @@
     :root { font-family: 'Inter var', sans-serif; }
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation-duration: 0.1s;
-}
-
 ::selection {
     background-color: var(--principal);
     color: black;
