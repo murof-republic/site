@@ -4,12 +4,13 @@ interface Props {
     nome: string
     descricao: string
     class?: string;
+    link?: string;
 }
 
-const { avatar, nome, descricao, class: className } = Astro.props
+const { avatar, nome, descricao, class: className, link } = Astro.props
 ---
 
-<div class={`card ${className ?? ""}`}>
+<div class={`card ${className ?? ""}`} onclick={link ? `window.open('${link}', '_blank')` : undefined}>
     <img src={avatar} alt={nome}>
 
     <div class="card-content">
