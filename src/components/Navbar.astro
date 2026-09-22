@@ -64,13 +64,14 @@ const page = Astro.url.pathname;
 
 <script>
     function updateActive(): void {
-        const path: string = window.location.pathname.replace(/\/$/, "") || "/";
+        const path = window.location.pathname.replace(/\/$/, "") || "/";
 
-        document.querySelectorAll<HTMLAnchorElement>(".dropdown > a").forEach((link) => {
-            link.classList.toggle(
-                "active",
-                link.getAttribute("href") === path
-            );
+        document.querySelectorAll<HTMLAnchorElement>(
+            ".center > a, .dropdown > a"
+        ).forEach((link) => {
+            const href = link.getAttribute("href")?.replace(/\/$/, "") || "/";
+
+            link.classList.toggle("active", href === path);
         });
     }
 
