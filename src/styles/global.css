@@ -35,3 +35,8 @@ body {
     background-color: var(--background);
     color: var(--font-color);
 }
+
+main {
+    padding-top: 40px;
+    margin-inline: 5%;
+}

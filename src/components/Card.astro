@@ -1,0 +1,57 @@
+---
+interface Props {
+    avatar: string
+    nome: string
+    descricao: string
+}
+
+const { avatar, nome, descricao } = Astro.props
+---
+
+<div class="card">
+    <img src={avatar} alt={nome}>
+
+    <div class="card-content">
+        <h2>{nome}</h2>
+        <p>{descricao}</p>
+    </div>
+</div>
+
+<style>
+    .card {
+        background-color: var(--background);
+        border: 1px solid var(--border);
+        padding: 20px;
+        transition: all 0.2s ease-out;
+        height: 200px;
+        margin: 15px;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        transition: all 0.2s ease-out;
+        border: 1px solid var(--principal);
+        cursor: pointer;
+    }
+
+    .card img {
+        width: 60px;
+    }
+
+    .card-content {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 767px) {
+        .card {
+            margin: 0;
+            margin-top: 5%;
+        }
+
+        .card:hover {
+            transform: none;
+            transition: none;
+            border: 1px solid var(--border);
+        }
+    }
+</style>

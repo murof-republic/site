@@ -1,9 +1,116 @@
 ---
+import "../styles/global.css"
+
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import background from "../assets/images/background.webp"
+
+import { buscarApoiadores } from "../firebase/apoiadores"
+
+const apoiadores = await buscarApoiadores();
+const trigger = apoiadores.find(
+    (apoiador) => apoiador.id === "1369726597162205317"
+)!
+
+const snuf = apoiadores.find(
+    (apoiador) => apoiador.id === "1370119246276726944"
+)!
 ---
 
 <Layout title="Home">
 	<main>
-		
+		<article>
+			<section class="introduction" style={`background-image: url(${background.src})`}>
+				<div class="introduction-text">
+					<img src={background.src} class="background-mobile" alt="Murof cat!">
+					<h1>Olá Viajante!</h1>
+					<p>Unimos entusiastas e profissionais de programação, tecnologia, jogos e arte em um ambiente feito para a troca de conhecimento e boas conexões. Faça parte!</p>
+
+					<span>@murof-republic, by triggerww</span>
+				</div>
+
+
+			<div class="introduction-cards">
+				<Card
+					avatar={trigger.avatar}
+					nome={trigger.nome}
+					descricao={"Acesse nosso repositório e organização no GitHub! Confira nossos projetos e wallpapers da comunidade."}
+				/>
+
+				<Card
+					avatar={snuf.avatar}
+					nome={snuf.nome}
+					descricao={snuf.descrição}				
+				/>
+			</div>
+			</section>
+		</article>
 	</main>
+
+	<style>
+		.background-mobile {
+			display: none;
+		}
+
+		.introduction {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			min-height: calc(100vh - 50px);
+		}
+
+		.introduction-text {
+			width: 36%;
+		}
+
+		.introduction-text h1 {
+			font-size: 1.5rem;
+			padding-bottom: 2%;
+		}
+
+		.introduction-text p {
+			font-size: 1.2rem;
+			padding-bottom: 2%;
+		}
+
+		.introduction-cards {
+			width: 35%;
+		}
+
+		@media (max-width: 767px) {
+			.background-mobile {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: auto;
+				padding-top: 50px;
+				padding-bottom: 20px; 
+				width: 300px;
+			}
+			.introduction {
+				flex-direction: column;
+				background-image: none !important;
+				margin-bottom: 15%;
+			}
+
+			.introduction-text {
+				width: 100%;
+			}
+
+			.introduction-text p {
+				padding-bottom: 2%;
+			}
+
+			.introduction-cards {
+				width: 100%;
+			}
+		}
+	</style>
 </Layout>
+
+
+
