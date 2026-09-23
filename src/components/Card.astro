@@ -11,7 +11,7 @@ const { avatar, nome, descricao, class: className, link } = Astro.props
 ---
 
 <div class={`card ${className ?? ""}`} onclick={link ? `window.open('${link}', '_blank')` : undefined}>
-    <img src={avatar}>
+    <img src={avatar} alt={nome}>
 
     <div class="card-content">
         <h2>{nome}</h2>
