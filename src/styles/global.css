@@ -1,5 +1,5 @@
 :root {
-    --principal: #214dd2;
+    --principal: #4169e1;
     --background: #000000;
     --border: rgba(255, 255, 255, 0.10);
     --font-color: #FFFFFF;
@@ -17,7 +17,7 @@
 
 ::selection {
     background-color: var(--principal);
-    color: black;
+    color: var(--background);
 }
 
 a {
