@@ -5,26 +5,60 @@ import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title?: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title = 'Murof',
+	description = 'Unimos entusiastas e profissionais de programação, tecnologia, jogos e arte em um ambiente feito para a troca de conhecimento e boas conexões. Faça parte!'
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/ico" href="/favicon.ico" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
+		<title>{title}</title>
+
+		<meta name="description" content={description} />
+		<meta name="keywords" content="comunidade, social, servidor, discord, github, jogos, artes, murof" />
+		<meta name="author" content="triggerww" />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#000000" />
+
+		<link rel="canonical" href={canonical} />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="pt_BR" />
+		<meta property="og:site_name" content="Murof" />
+		<meta property="og:image" content="https://murof.me/banner.webp" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@murof" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="https://murof.me/banner.webp" />
+
+		<!-- Fonte -->
 		<link rel="preconnect" href="https://rsms.me/" />
 		<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 
-		<ClientRouter />
+		<meta name="generator" content={Astro.generator} />
 
-		<title>{title}</title>
+		<ClientRouter />
 	</head>
+
 	<body>
 		<Navbar />
 		<slot />
