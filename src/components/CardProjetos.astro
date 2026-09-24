@@ -25,7 +25,19 @@ const { nome, descricao, mantedor, link, class: className } = Astro.props
         padding: 20px;
         transition: all 0.2s ease-out;
         width: calc(33.333% - 14px);
-        height: 200px;
+        min-height: 200px;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .card-content {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .card-content h2,
+    .card-content p {
+        overflow-wrap: anywhere;
     }
 
     .card:hover {
@@ -49,7 +61,7 @@ const { nome, descricao, mantedor, link, class: className } = Astro.props
         padding-top: 2px;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 1000px) {
         .card {
             margin: 0;
             font-size: 0.9rem;
