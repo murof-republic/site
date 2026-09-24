@@ -1,3 +1,4 @@
+
 ---
 interface Props {
     avatar: string
@@ -31,7 +32,19 @@ const { avatar, nome, descricao, class: className, link } = Astro.props
         padding: 20px;
         transition: all 0.2s ease-out;
         width: calc(33.333% - 14px);
-        height: 200px;
+        min-height: 200px;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .card-content {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .card-content h2,
+    .card-content p {
+        overflow-wrap: anywhere;
     }
 
     .card:hover {
@@ -65,8 +78,8 @@ const { avatar, nome, descricao, class: className, link } = Astro.props
             width: 50px;
             padding-bottom: 5px;
         }
-        
-        .card-content h2{
+
+        .card-content h2 {
             font-size: 1.2rem;
         }
 

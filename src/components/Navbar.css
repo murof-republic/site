@@ -17,18 +17,22 @@ nav {
     font-size: 1rem;
 }
 
-.left,.center,.right {
+.left,
+.center,
+.right {
     display: flex;
     align-items: center;
 }
 
 .left {
     justify-self: start;
+    min-width: 0;
 }
 
 .center {
     height: 100%;
     gap: 0;
+    min-width: 0;
 }
 
 .center a {
@@ -39,6 +43,7 @@ nav {
     border-bottom: 2px solid transparent;
     box-sizing: border-box;
     transition: all 0.1s ease-out;
+    white-space: nowrap;
 }
 
 .center a:hover {
@@ -53,15 +58,17 @@ nav {
 
 .right {
     justify-self: end;
+    min-width: 0;
 }
 
 .logo {
-    font-family: "GregorianFLF",sans-serif;
+    font-family: "GregorianFLF", sans-serif;
     font-weight: normal;
     font-size: 2.3rem;
     text-transform: uppercase;
     text-decoration: none;
     line-height: 1;
+    white-space: nowrap;
 }
 
 .logo:hover {
@@ -93,6 +100,7 @@ nav {
     gap: 8px;
     margin-left: 15px;
     line-height: 1;
+    white-space: nowrap;
 }
 
 #dot {
@@ -106,19 +114,19 @@ nav {
 
 #dot.online {
     background: #2ecc71;
-    box-shadow: 0 0 0 4px rgba(46,204,113,0.15);
+    box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.15);
 }
 
 #dot.offline {
     background: #ff3b30;
-    box-shadow: 0 0 0 4px rgba(255,59,48,0.15);
+    box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.15);
 }
 
 .mobile-menu {
     display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
     nav {
         grid-template-columns: 1fr auto;
         padding-inline: 5%;
@@ -171,7 +179,7 @@ nav {
         box-sizing: border-box;
         opacity: 0;
         transform: translateY(-8px);
-        transition: opacity .15s ease, transform .15s ease;
+        transition: opacity 0.15s ease, transform 0.15s ease;
         pointer-events: none;
         margin-right: 3px;
     }
