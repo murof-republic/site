@@ -79,18 +79,63 @@ const page = Astro.url.pathname;
 
     document.addEventListener("astro:page-load", updateActive);
 
-    fetch("https://api.mcstatus.io/v2/status/java/mc.murof.me")
-        .then(response => response.json())
-        .then(data => {
-            if (data.online) {
-                const dot = document.getElementById("dot") as HTMLElement;
-                const adress = document.getElementById("adress") as HTMLElement;
+    const statusStorageKey = "murof-minecraft-status";
 
-                dot.classList.remove("offline");
-                dot.classList.add("online");
-                adress.innerText = data.host;
+    function setServerStatus(online: boolean, host = "mc.murof.me"): void {
+        const dot = document.getElementById("dot") as HTMLElement | null;
+        const adress = document.getElementById("adress") as HTMLElement | null;
+
+        dot?.classList.toggle("online", online);
+        dot?.classList.toggle("offline", !online);
+
+        if (adress) {
+            adress.innerText = host;
+        }
+    }
+
+    function readCachedStatus(): void {
+        try {
+            const cached = JSON.parse(sessionStorage.getItem(statusStorageKey) ?? "null");
+
+            if (cached && typeof cached.online === "boolean") {
+                setServerStatus(cached.online, cached.host);
             }
-        });
+        } catch {
+            sessionStorage.removeItem(statusStorageKey);
+        }
+    }
+
+    async function updateServerStatus(): Promise<void> {
+        readCachedStatus();
+
+        try {
+            const response = await fetch(
+                "https://api.mcstatus.io/v2/status/java/mc.murof.me",
+                { cache: "no-store" }
+            );
+
+            if (!response.ok) {
+                throw new Error(`Status API returned ${response.status}`);
+            }
+
+            const data = await response.json();
+            const versionName = data.version?.name_clean ?? "";
+            const online = data.online === true && !/offline/i.test(versionName);
+            const status = { online, host: data.host ?? "mc.murof.me" };
+
+            setServerStatus(status.online, status.host);
+            sessionStorage.setItem(statusStorageKey, JSON.stringify(status));
+        } catch {
+            setServerStatus(false);
+            sessionStorage.setItem(
+                statusStorageKey,
+                JSON.stringify({ online: false, host: "mc.murof.me" })
+            );
+        }
+    }
+
+    updateServerStatus();
+    document.addEventListener("astro:page-load", updateServerStatus);
 
     // Menu Dropdown; Animação.
     const mobileMenu = document.querySelector(".mobile-menu") as HTMLDetailsElement;
