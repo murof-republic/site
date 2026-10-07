@@ -4,11 +4,11 @@ Repositório contendo todo código fonte do site da [Murof](https://murof.me/), 
 
 ## Features
 
-- Performance otimizada
-- Design responsivo
-- Firebase integrada
-- Status do mine(mc.murof.me)
-- Integração com serviços do [servidor](https://discord.gg/MWrYrytMCg
+- Performance otimizada.
+- Design responsivo.
+- Firebase integrada.
+- Status do mine(mc.murof.me).
+- Integração com serviços do [servidor.](https://discord.gg/MWrYrytMCg
 )
 
 ## Rodar localmente(?)
