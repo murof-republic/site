@@ -8,7 +8,7 @@ Repositório contendo todo código fonte do site da [Murof](https://murof.me/), 
 - Design responsivo
 - Firebase integrada
 - Status do mine(mc.murof.me)
-- Integração com serviços do [servidor.](https://discord.gg/MWrYrytMCg
+- Integração com serviços do [servidor](https://discord.gg/MWrYrytMCg
 )
 
 ## Rodar localmente(?)
