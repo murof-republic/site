@@ -14,6 +14,29 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const socialImage = new URL('/banner.webp', Astro.site).href;
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': 'https://murof.me/#organization',
+			name: 'Murof',
+			url: 'https://murof.me/',
+			logo: socialImage,
+			description
+		},
+		{
+			'@type': 'WebSite',
+			'@id': 'https://murof.me/#website',
+			url: 'https://murof.me/',
+			name: 'Murof',
+			description,
+			publisher: { '@id': 'https://murof.me/#organization' },
+			inLanguage: 'pt-BR'
+		}
+	]
+};
 ---
 
 <html lang="pt-BR">
@@ -24,11 +47,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 		<title>{title}</title>
 
 		<meta name="description" content={description} />
-		<meta name="keywords" content="comunidade, social, servidor, discord, github, jogos, artes, murof" />
-		<meta name="author" content="triggerww" />
+		<meta name="author" content="triggwer" />
 		<meta name="robots" content="index, follow" />
 		<meta name="theme-color" content="#000000" />
-		<meta name="msvalidate.01" content="118743DD3B08999654822F73DAF4803A" />
+		<meta name="referrer" content="strict-origin-when-cross-origin" />
 
 		<link rel="canonical" href={canonical} />
 
@@ -42,14 +64,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="pt_BR" />
 		<meta property="og:site_name" content="Murof" />
-		<meta property="og:image" content="https://murof.me/banner.webp" />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:image:alt" content="Murof, comunidade de tecnologia, jogos e arte" />
+		<meta property="og:image:type" content="image/webp" />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@murof" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="https://murof.me/banner.webp" />
+		<meta name="twitter:image" content={socialImage} />
+		<meta name="twitter:image:alt" content="Murof, comunidade de tecnologia, jogos e arte" />
+
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
 		<!-- Fonte -->
 		<link rel="preconnect" href="https://rsms.me/" />

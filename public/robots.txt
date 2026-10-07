@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://murof.me/sitemap.xml
+Sitemap: https://murof.me/sitemap-index.xml
