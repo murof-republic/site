@@ -1,43 +1,48 @@
-# Astro Starter Kit: Minimal
+# Site
 
-```sh
-npm create astro@latest -- --template minimal
+Repositório contendo todo código fonte do site da [Murof](https://murof.me/), o site foi desenvolvido utilizando o framework Astro e TypeScript.
+
+## Features
+
+- Performance otimizada
+- Design responsivo
+- Firebase integrada
+- Status do mine(mc.murof.me)
+- Integração com serviços do [servidor.](https://discord.gg/MWrYrytMCg
+)
+
+## Rodar localmente(?)
+
+Clone o projeto
+
+```bash
+  git clone https://link-to-project
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Vá para o diretório do projeto
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+  cd my-project
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Instalar dependências
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+  npm install
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+Inicie o servidor
 
-## 🧞 Commands
+```bash
+  npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+## License
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+[MIT](LICENSE)
 
-## 👀 Want to learn more?
+## Authors
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [@triggwer](https://github.com/triggwer)
+- [@murof-republic](https://github.com/murof-republic)
+
