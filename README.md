@@ -16,13 +16,13 @@ Repositório contendo todo código fonte do site da [Murof](https://murof.me/), 
 Clone o projeto
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/murof-republic/site.git
 ```
 
 Vá para o diretório do projeto
 
 ```bash
-  cd my-project
+  cd site
 ```
 
 Instalar dependências
