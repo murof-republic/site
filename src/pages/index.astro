@@ -30,7 +30,7 @@ const snuf = apoiadores.find(
 					<span>@murof-republic, by triggerww</span>
 				</div>
 
-				<div class="introduction-cards">
+				<div class="introduction-cards" id="apoiadores-destaque">
 					<Card
 						class="fixed"
 						avatar={trigger.avatar}
@@ -50,6 +50,12 @@ const snuf = apoiadores.find(
 			</section>
 		</article>
 	</main>
+
+	<script>
+		import { atualizarDestaques } from "../scripts/firebase-content"
+
+		atualizarDestaques("#apoiadores-destaque").catch(console.error)
+	</script>
 </Layout>
 
 

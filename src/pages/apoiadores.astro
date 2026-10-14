@@ -18,7 +18,7 @@ const apoiadores = await buscarApoiadores()
                 subtitulo="Pessoal que apoia o servidor, moderadores, Server Boosters e outras pessoas que contribuem de alguma forma."
             />
 
-            <section class="apoiadores">
+            <section class="apoiadores" id="apoiadores-lista">
                 {apoiadores.map(apoiador => (
                     <Card 
                         avatar={apoiador.avatar}
@@ -29,6 +29,12 @@ const apoiadores = await buscarApoiadores()
             </section>
         </article>
     </main>
+
+    <script>
+        import { atualizarApoiadores } from "../scripts/firebase-content"
+
+        atualizarApoiadores("#apoiadores-lista").catch(console.error)
+    </script>
 
     <style>
         .apoiadores {

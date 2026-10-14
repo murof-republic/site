@@ -20,7 +20,7 @@ const artistas = await buscarArtistas()
                 subtitulo="Todas as artes aqui foram feitas pelo pessoal do servidor!"
             />
 
-            <section class="galeria">
+            <section class="galeria" id="artes-lista">
                 {artes.map(arte => (
                     <Arte
                         arte={arte.url}
@@ -35,7 +35,7 @@ const artistas = await buscarArtistas()
                 subtitulo="Espaço dedicado aos créditos de todos os artistas. Muito obrigado por contribuírem e fazerem do servidor!"
             />
 
-            <section class="artistas">
+            <section class="artistas" id="artistas-lista">
                 {artistas.map(artista => (
                     <Card 
                         avatar={artista.avatar}
@@ -47,6 +47,13 @@ const artistas = await buscarArtistas()
         </article>
     </main>
 
+    <script>
+        import { atualizarArtes, atualizarArtistas } from "../scripts/firebase-content"
+
+        atualizarArtes("#artes-lista").catch(console.error)
+        atualizarArtistas("#artistas-lista").catch(console.error)
+    </script>
+
     <div class="modal" id="Modal">
         <img class="modal-content" id="img" src="" alt="">
     </div>
@@ -54,10 +61,6 @@ const artistas = await buscarArtistas()
     <script>
         const modal = document.getElementById("Modal") as HTMLDivElement
         const modalImg = document.getElementById("img") as HTMLImageElement
-
-        const imagens = document.querySelectorAll<HTMLImageElement>(
-            ".galeria img"
-        )
 
         function openModal(img: HTMLImageElement) {
             modalImg.src = img.src
@@ -89,13 +92,13 @@ const artistas = await buscarArtistas()
             }, 500)
         }
 
-        imagens.forEach((img) => {
-            img.addEventListener("click", () => {
-                openModal(img)
-            })
-        })
-
         modal.addEventListener("click", closeModal)
+        document.querySelector(".galeria")?.addEventListener("click", (event) => {
+            const target = event.target
+            if (target instanceof HTMLImageElement) {
+                openModal(target)
+            }
+        })
     </script>
 
     <style>
